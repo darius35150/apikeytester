@@ -1,0 +1,156 @@
+<!-- 
+********************************************************************************
+****Program Title:   Google Maps Test                                          *
+****Company:         Holley Software, Inc.                                     *
+****Document Name:   index.html                                                *
+****Author:          Darius Holley                                             *
+****Date Deployed:   August 12, 2018                                           *
+****Department:      Any                                                       *
+****Description:     Main file for displaying specific parts of the UI an test *
+****                 results.                                                  *
+********************************************************************************
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google API Key Tester</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="icon" type="image/png" href="./img/traffic_light.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script id="script" type="text/javascript" src="js/Script.js" defer></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js" defer></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158885716-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-158885716-1');
+        </script>
+    </head>
+    <body>
+        <div class="tab">
+            <button class="tablinks" id="tester">API Key Tester</button>
+            <button class="tablinks" id="ip">What's my Ip</button>
+            <button class="tablinks" id="contact">Suggestions</button>
+        </div>
+        <div id="testerpage">
+            <div id="form">
+                <label id="testneeded"><b>Select type of test needed:</b></label>
+                <br>
+                <select id="dropdown" >
+                    <option class="options" value="blank"></option>
+                    <option class="options" value="mapping">Google Mapping</option>
+                    <option class="options" value="geocode">Google Geocode</option>
+                    <option class="options" value="static">Google Static Map</option>
+                    <option class="options" value="directions">Google Directions</option>
+                </select>
+                <br/>
+                <label><b>Enter key here:</b></label>
+                <br/>
+                <input id="newKey" type="text" placeholder="Place Google API Key Here"/>
+                <button id="submitButton" onmouseup="submitTextBox()"  class="submitButton btn btn-primary"><b>Submit</b></button>
+                <button type="submit" id="apidocbutton" class="apidocbutton btn btn-primary" onclick="window.open('docs/Customer_Handout_Google_API_2.0_02182019.xlsx')"><b>Get API Doc</b></button>
+                <button id="helpButton" onmouseup="helpMenu()" class="helpButton btn btn-primary"><b>Help</b></button>
+            </div>
+            <div id="addressForm">
+                <form id="insideForm">
+                    <input id="addressNum" placeholder="Place Address, or Name of a Location Here" />
+                </form>
+            </div>
+            <div id="helpMenu" class="helpMenu">
+                <span class="close">x</span>
+                <center>
+                    <table width="1200px" height="100px" border="1">
+                        <tr>
+                            <th>
+                                Google Mapping (Google Maps Javascript API)
+                            </th>
+                            <th>
+                                Google Geocode (Google Geocode API)
+                            </th>
+                            <th>
+                                Google Static Map (Google Static Maps API)
+                            </th>
+                            <th>
+                                Google Directions (Google Directions API)
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <ul>
+                                        <li>Distance Calculator</li>
+                                        <li>Order Planning</li>
+                                        <li>Brokerage Planning</li>
+                                        <li>Movements Screen Map/Tracking Tab</li>
+                                    </ul>
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <ul>
+                                        <li>Location Entry</li>
+                                    </ul>
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <ul>
+                                        <li>Mobile Comm Positions</li>
+                                    </ul>
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <ul>
+                                        <li>Distance Calculator</li>
+                                        <li>Order Planning</li>
+                                        <li>Brokerage Planning</li>
+                                        <li>Movements Screen Map/Tracking Tab</li>
+                                    </ul>
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+        </div>
+        <div id="ipaddress">
+            <center>
+                <label><h1><b>Your ip address is:</b></h1></label>
+                <p><h3 id="showaddress"></h3></p>
+            </center>
+        </div>
+        <div id="contactform">
+            <div id="page" class="container">
+                <center>
+                    <h1 id="suggestions"><b><i>Suggestions</i></b></h1>
+                    <div class="container" id="suggform">
+                        <form class="form-horizontal" id="contact_form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="fname" name="subject" placeholder="Subject">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" rows=5 cols="50" class="form-control" id="message" name="message" placeholder="Type message here..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success" onclick="testEmail()">Submit</button>
+                        </form>
+                    </div>
+                </center>
+            </div>
+            <script type="text/javascript" src="js/contact.js" defer></script>
+        </div>
+        <br/>
+        <br/>
+        <div id="map"></div>
+        <script type="text/javascript" src="js/animation.js" defer></script>
+    </body>
+</html> 
