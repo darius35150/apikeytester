@@ -18,6 +18,7 @@ const OPTION_VALUE_MAPPING = "mapping";
 const OPTION_VALUE_GEOCODE = "geocode";
 const OPTION_VALUE_STATIC = "static";
 const OPTION_VALUE_DIRECTIONS = "directions";
+const OPTION_VALUE_KEY_COMPARE = "comparator";
 const OPTION_VALUE_BLANK = "blank";
 
 const submitTextBox = () => {
@@ -27,8 +28,10 @@ const submitTextBox = () => {
   console.log(testType);
 
   let key = document.getElementById('newKey').value;
+  let comparefield1 = document.getElementById("addressNum").value;
+  let comparefield2 = document.getElementById("comparefield").value;
 
-  if (!testMeetsQualifications(key))
+  if (!testMeetsQualifications(key) || testType != OPTION_VALUE_KEY_COMPARE)
   {
     if(testType === OPTION_VALUE_BLANK && key === "")
     {
@@ -46,6 +49,14 @@ const submitTextBox = () => {
       return;
     }
   }
+  else
+  {
+    if(comparefield1 === "" || comparefield2 === "")
+    {
+      alert("Please enter a key to compare");
+      return;
+    }
+  }
 
   if (testType === OPTION_VALUE_MAPPING || testType === OPTION_VALUE_DIRECTIONS) {
     performMappingTest(key);
@@ -55,6 +66,10 @@ const submitTextBox = () => {
   }
   else if(testType === OPTION_VALUE_STATIC){
     performStaticTest(key);
+  }
+  else if(testType === OPTION_VALUE_KEY_COMPARE)
+  {
+    performeKeyTest(comparefield1, comparefield2);
   }
 }
 
@@ -170,6 +185,17 @@ const performStaticTest = (key) => {
   }
 }
 
+const performeKeyTest = (comparefield1, comparefield2) =>{
+  if(comparefield1 === comparefield2)
+  {
+    alert("The two keys are a match!");
+  }
+  else
+  {
+    alert("The two keys do not match!");
+  }
+}
+
 const getIpAddress = () =>{
   const ipifyRequest = new XMLHttpRequest();
   const url = "https://api.ipify.org";
@@ -206,7 +232,7 @@ function helpMenu(){
 
 const testMeetsQualifications = (key) =>{
 
-  return key != "" && testType != OPTION_VALUE_BLANK;
+  return (key != "" && testType != OPTION_VALUE_BLANK) || testType === OPTION_VALUE_KEY_COMPARE;
 
 }
 /**************************************************************************

@@ -14,6 +14,7 @@ const OPTION_SELECTION_MAPPING = "Google Mapping";
 const OPTION_SELECTION_GEOCODE = "Google Geocode";
 const OPTION_SELECTION_STATIC = "Google Static Map";
 const OPTON_SELECTION_DIRECTIONS = "Google Directions";
+const OPTION_SELECTION_KEY_COMPARE = "Key Compare";
 
 $(document).ready(function(){
     $("#map").hide();
@@ -28,25 +29,47 @@ $(function(){
         
         if(dropMenuValueText === OPTION_SELECTION_GEOCODE){
             $("#map").hide();
+            $("#comparefield").hide();
             $("#addressForm").fadeIn();
             $("img").remove();
+            $("#newKey").show();
+            $("label").show();
+            changeAddressLabel(dropMenuValueText);
         }
         else if(dropMenuValueText === OPTION_SELECTION_MAPPING)
         {
             $("#map").hide();
             $("#addressForm").hide();
             $("img").remove();
+            $("#newKey").show();
+            $("label").show();
+            changeAddressLabel(dropMenuValueText);
         }
         else if(dropMenuValueText === OPTION_SELECTION_STATIC)
         {
             $("#map").hide();
             $("#addressForm").fadeIn();
+            $("#comparefield").hide();
+            $("#newKey").show();
+            $("label").show();
+            changeAddressLabel(dropMenuValueText);
+        }
+        else if(dropMenuValueText === OPTION_SELECTION_KEY_COMPARE)
+        {
+            $("#map").hide();
+            $("#addressForm").fadeIn();
+            $("#comparefield").fadeIn();
+            $("#newKey").hide();
+            $("label").hide();
+            $("img").hide();
+            changeAddressLabel(dropMenuValueText);
         }
         else
         {
             $("#map").hide();
             $("#addressForm").hide();
             $("img").hide();
+            changeAddressLabel(dropMenuValueText);
         }
     });
 });
@@ -72,3 +95,17 @@ $(function(){
         $("#contactform").show();
     })
 });
+
+const changeAddressLabel = (dropMenuValueText) =>{
+
+    if(dropMenuValueText === OPTION_SELECTION_KEY_COMPARE)
+    {
+        let fieldScript = document.getElementById("addressNum");
+        fieldScript.placeholder = "Place 1st Key to compare";
+    }
+    else
+    {
+        let fieldScript = document.getElementById("addressNum");
+        fieldScript.placeholder = "Place Address, or Name of a Location Here";
+    }
+}

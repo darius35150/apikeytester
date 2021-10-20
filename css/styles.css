@@ -88,6 +88,11 @@ label{
     width: 312px;
 }
 
+#comparefield{
+    width: 312px;
+    margin-top: 20px;
+}
+
 .helpMenu{
     /* border-radius: 15px; */
     border-style: inset;
