@@ -22,7 +22,7 @@ body{
 #map{
     width: 900px;
     height: 500px;
-    margin-top: -235px;
+    margin-top: 5px;
     margin-left: 375px;
     position: fixed;
 }
@@ -39,6 +39,7 @@ p{
     margin-left: 10px;
     width: 335px;
     height: 195px;
+    position: fixed;
 }
 
 #submitButton{
@@ -70,12 +71,12 @@ label{
 }
 
 #addressForm{
-    margin-top: 30px;
+    margin-top: 325px;
     margin-left: 10px;
-    margin-bottom: 0px;
     width: 335px;
     height: 220px;
     border: 2px groove black;
+    position: fixed;
 }
 
 #insideForm{
@@ -196,7 +197,8 @@ table{
 
   #container-8db924ee58a0eaf2c87a56048ac4d821{
     width: 15%;
-    height: 25%;
-    left: 0px;
-    position: static;
+    height: 30%;
+    right: 0px;
+    position: fixed;
+    overflow: hidden;
   }
